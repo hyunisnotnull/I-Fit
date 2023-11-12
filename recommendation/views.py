@@ -2,6 +2,7 @@ from django.shortcuts import render
 #from .recommendation import recommend_size  # 딥러닝 모델을 사용할 모듈
 from .forms import SizeRecommendationForm
 # Create your views here.
+import logging
 
 def recommendation(request):
     if request.method == 'POST':
@@ -11,7 +12,8 @@ def recommendation(request):
             height = form.cleaned_data['height']
             weight = form.cleaned_data['weight']
             clothing_type = form.cleaned_data['clothing_type']
-            
+            logging.warning('1.여기서 문제다.', height)
+
             additional_info = {}  # 옷 종류에 따른 추가 정보
             if clothing_type in ['outer', 'top']:
                 additional_info['shoulder'] = form.cleaned_data['shoulder']
