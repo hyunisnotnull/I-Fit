@@ -556,7 +556,7 @@ input::-ms-input-placeholder {
 }
 .main_menu_bg{
     margin-top: 0px;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.342);
 }
 .main_menu_bg .navbar-default {
     background-color: transparent; 
@@ -663,7 +663,7 @@ input::-ms-input-placeholder {
 /*home section*/
 .home{
     background: url(https://images.pexels.com/photos/1478477/pexels-photo-1478477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%;
 }
 .home_skew_border{
     position: relative;
@@ -1415,10 +1415,24 @@ li .single_team_text p{
 ===================================================================*/
 .footer{
     background: #000000;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 .main_footer{
+    /*overflow: hidden;
+    padding: 20px 0px;*/
+    position: fixed;
+    left: 0;
+    bottom: 0px;
+    height: 60px;
+    width: 100%;
     overflow: hidden;
-    padding: 20px 0px;
+    margin: 0px;
+    padding: 0px 5px;
+    background-color: #000; /* 원하는 배경색으로 설정하세요 */
+    color: #fff; /* 텍스트 색상을 원하는 색상으로 설정하세요 */
 }
 
 .main_footer .flowus a i{
@@ -1437,16 +1451,16 @@ li .single_team_text p{
 }
 
 .copyright_text{
-    text-align: right;
+    text-align: center;
 }
 .copyright_text p{
     color:#fff;
     line-height: 25px;
     max-width: 100%;
-    padding-top: 15px;
+    padding-top: 5px;
 }
 .copyright_text p i{
-    padding:0px 10px;
+    padding:20px 0px;
     color:#ff0000;
 }
 .copyright_text p a{

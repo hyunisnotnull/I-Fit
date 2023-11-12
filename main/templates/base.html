@@ -1,115 +1,72 @@
 <!-- base.html -->
 <!DOCTYPE html>
 {% load static %}
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>I-Fit start Page</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 
-    <link rel="stylesheet" type="text/css" href="static/css/iconfont.css">
-    <link rel="stylesheet" type="text/css" href="static/css/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="static/css/slick/slick-theme.css">
-    <link rel="stylesheet" type="text/css" href="static/css/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="static/css/jquery.fancybox.css">
-    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="static/css/magnific-popup.css">
-    <!--        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-theme.min.css">-->
+<html>
+	<head>
+		<title>WELCOME TO I-FIT</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="{% static "css2/main.css" %}" />
+	</head>
+	<body class="is-preload">
 
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-    <!--For Plugins external css-->
-    <link rel="stylesheet" type="text/css" href="static/css/plugins.css" />
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
 
-    <!--Theme custom css -->
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+							<!-- Header -->
+								<header id="header">
+									<a href="{% url 'main:main' %}" class="logo"><strong>I-FIT</strong> 'Recommend clothes size to users WebSite'</a>
+									<ul class="icons">
+										<li><a href="https://html5up.net" class="icon brands fa-html5"><span class="label">Html5</span></a></li>
+										<li><a href="https://github.com/hyunisnotnull/I-Fit" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									</ul>
+								</header>
+								{% block content %}
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h1>'I-FIT' <br />
+												</h1>
+											<p>맞춤 의류 서비스를 제공합니다.</p>
+										</header>
+										<p>'나색'은 자신만의 색상을 찾아주는 웹 서비스입니다. 자신의 피부색을 촬영하여 업로드하면, 여러 분의 피부색과 동일한 오늘의 의상 컨셉을 알려줍니다. 모든 서비스는 무료입니다. 지금 바로 시작해보세요!</p>
+										<ul class="actions">
+											<li><a href="#" class="button big">더 알아보기</a></li>
+										</ul>
+									</div>
+									<span class="image object">
+										<img src="static\images\logo2.PNG" alt="" style="max-width: 400px; margin-left: auto; margin-right: auto;"/>
+									</span>
+								</section>
 
-    <!--Theme Responsive css-->
-    <link rel="stylesheet" type="text/css" href="static/css/responsive.css" />
+								{% endblock %}
 
-    <script src="static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-</head>
-<body data-spy="scroll" data-target=".navbar-collapse">
-    <div class='preloader'><div class='loaded'>&nbsp;</div></div>
-    <div class="culmn">
-        <header id="main_menu" class="header navbar-fixed-top">            
-            <div class="main_menu_bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="nave_menu">
-                            <nav class="navbar navbar-default">
-                                <div class="container-fluid">
-                                    <!-- Brand and toggle get grouped for better mobile display -->
-                                    <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                            <span class="sr-only">Toggle navigation</span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                        </button>
-                                       <!-- <a class="navbar-brand" href="#home" style="size: 1%;">
-                                            <img src="assets/images/logo2.PNG"/>
-                                        </a>-->
-                                    </div>
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Made by I-FIT Team. 2023 I-FIT Site. Design by <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
 
-                                    <!-- Collect the nav links, forms, and other content for toggling -->
+						</div>
+					</div>
 
+			</div>
+            
+		<!-- Scripts type="text/css" -->
+			<script src="static/js2/jquery.min.js" type="text/js"></script>
+			<script src="static/js2/browser.min.js" type="text/js"></script>
+			<script src="static/js2/breakpoints.min.js" type="text/js"></script>
+			<script src="static/js2/util.js" type="text/js"></script>
+			<script src="static/js2/main.js" type="text/js"></script>
 
-
-                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                                        <ul class="nav navbar-nav navbar-right">
-                                            <li><a href="{% url 'main:main' %}">HOME</a></li>
-                                            <li><a href="{% url 'accounts:login' %}">로그인</a></li>
-                                            <li><a href="{% url 'accounts:signup' %}">회원가입</a></li>
-                                            <li><a href="{% url 'user:user' %}">사이즈 수정</a></li>
-                                            <li><a href="{% url 'clothes:clothes' %}">옷 치수 입력</a></li>
-                                        </ul>
-
-
-                                    </div>
-
-                                </div>
-                            </nav>
-                        </div>	
-                    </div>
-
-                </div>
-
-            </div>
-        </header>
-
-        <section class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="main_footer">
-                            <div class="row">
-                                <div class="col-sm-6 col-xs-12">
-                                    <div class="flowus">
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 col-xs-12">
-                                    <div class="copyright_text">
-                                        <p class=" wow fadeInRight" data-wow-duration="1s">Made by I-Fit Team<i class="fa fa-heart"></i> </a>2023. I-Fit Web Site</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section><!-- End off footer Section-->
-
-    
-        {% block content %}{% endblock %}
-    </div>
-</body>
+          
+	</body>
+	
+        
+	
+</html>

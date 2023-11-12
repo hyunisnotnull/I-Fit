@@ -1,0 +1,16 @@
+html, body{margin:0; padding:0; height:100%;font-size:18px; color:#555;}
+ul{margin:0;padding:0;list-style-type: style none;width:240px; margin:0 auto;}
+ul li{display:inline-block; margin-right:15px;        }
+ul li img{width:40px;}
+.login_wrap{width:100%; height:100%;  }
+.close{padding:20px; font-size:30px;}
+.logo{width:100%;height:180px; background-image: url(cm_logocircle.png); background-repeat: no-repeat;                background-position: 50%; background-size: 160px;        }
+form{width:80%; line-height:60px; margin:0 auto;  margin-top:50px; margin-bottom:50px;        } 
+.login_box{width:80%; height:50px; border:1px solid #dcdcdc;font-size:18px; color:#999;
+              border-radius: 50px; padding:0 10%;}
+.login_btn{width:100%; height:50px; background:#29aae2;  font-size:18px;color:#fff;
+             border-radius:50px;  border:none;margin-top:20px;}
+.s_txt{width:80%; margin:0 auto; font-size:12px; text-align: center;padding:5px 0;}
+input[type="text"]:focus, input[type="password"]:focus  {   
+               border:none;  background-color: #434A52;  color:#fff; 
+      }

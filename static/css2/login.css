@@ -1,0 +1,73 @@
+/* login.css */
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: rgb(238, 245, 240)
+}
+
+.login-form {
+    width: 450px;
+    background: #fff;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-form .input-group {
+    position: relative;
+    margin: 30px 0;
+}
+
+.login-form .input-group input {
+    height: 50px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.login-form .input-group label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+.login-form .input-group input:valid ~ label,
+.login-form .input-group input:focus ~ label {
+    top: 0;
+    font-size: 14px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 0px;
+    border: none;
+    background: #e6ecf1;
+    color: #b9a6a6;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-form button:hover {
+    background-color: #0056b3;
+}
+
+.pointer {
+    cursor: pointer;
+    
+}

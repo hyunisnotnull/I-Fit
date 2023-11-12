@@ -1,186 +1,216 @@
-<!DOCTYPE html>
-<html lang="ko">
-   
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
-    <!--<link rel="stylesheet" href="googleform.css">-->
-    
-    <style>
-      body {
-      font-family:'Noto Serif KR', serif;
-      background-color: #f2f2f2;
-      padding: 20px;
-    }
-        form {
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 0 auto;
-    }
+<!DOCTYPE HTML>
 
-    h1 {
-    text-align: center;
-    color: #2d6ba5;
-    margin-bottom: 20px;
-    }
+{% load static %}
+<html>
+	<head>
+		<title>I-FIT - 신체 정보 입력</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="{% static "css2\main.css" %}" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+			
+		
+			/* 폼 그룹 스타일 */
+			.form-group {
+				width: 50%;
+				margin: auto;
+				background-color: white;
+				border-radius: 5px;
+				padding: 20px;
+				box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+			}
+		
+			/* 폼 제목 스타일 */
+			.form-title {
+				text-align: center;
+				color: #333;
+				margin-bottom: 20px;
+				font-size: 24px;
+				font-weight: bold;
+			}
+		
+			/* 폼 컨트롤 스타일 */
+			.form-control {
+				height: 50px;
+				width: 50%; 
+				padding: 10px;
+				border-radius: 5px;
+				border: 1px solid #ddd;
+				margin-bottom: 20px;
+			}
+		
+			/* 버튼 스타일 */
+			.btn-primary {
+				background-color: #0084ff;
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 2px;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+		
+			/* 반응형 디자인 */
+			@media screen and (max-width: 768px) {
+				.form-group {
+					width: 100%;
+				}
+			}
+            
+        </style>
+	</head>
+	<!--<div class='preloader'><div class='loaded'>&nbsp;</div></div>-->
+	<body class="is-preload">
 
-    label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #333;
-    }
+		
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Main -->
+					
+					<div id="main">
+						<div class="inner">
 
-    input[type="number"],
-    select {
-    width: 50%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    font-size: 16px;
-    }
+							<!-- Header -->
+								<header id="header">
+									<a href = "{% url 'main:main' %}" class="logo"><strong>I-FIT</strong> 'Recommend clothes size to users WebSite'</a>
+									<ul class="icons">
+										<li><a href="https://html5up.net" class="icon brands fa-html5"><span class="label">Html5</span></a></li>
+										<li><a href="https://github.com/hyunisnotnull/I-Fit" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									</ul>
+								</header>
 
-    input[type="number"]:focus,
-    select:focus {
-    outline: none;
-    border-color: #007bff;
-    }
+							<!-- Banner -->
+								<!--<section id="banner">
+									<div class="content">
+										<header>
+											<h1>'I-FIT' <br />
+												</h1>
+											<p>맞춤 의류 서비스를 제공합니다.</p>
+										</header>
+										<p>'I-FIT'은 자신의 사이즈 찾아주는 웹 서비스입니다. 간단한 신체정보와 입을 옷에 대한 치수 등을 입력하면  비교를 하여 사이즈를 추천해드립니다. 지금 바로 시작해보세요!</p>
+										<ul class="actions">
+											<li><a href="{% url 'accounts:login' %}" class="button big">시작하기</a></li>
+										</ul>
+									</div>
+									<span class="image object">
+										<img src="static\images\logo2.PNG" alt="" style="max-width: 400px; margin-left: auto; margin-right: auto;"/>
+									</span>
+								</section>-->
 
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-    }
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>사용자 신체정보 입력</h2>
+									</header>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                           <!--<h1 class="form-title">사용자 신체정보 입력</h1><br><br>--> 
+                                            <label for="height">키 (cm):</label>
+                                            <input class="form-control" type="number" min="0" max="250" name="height" id="height" required><br>
+                                            <label for="weight">몸무게 (kg):</label>
+                                            <input class="form-control" type="number" min="0" max="250" name="weight" id="weight" required><br>
+                                            <label for="gender">성별:</label>
+                                            <select class="form-control" name="gender" id="gender">
+                                                <option value="male">남성</option>
+                                                <option value="female">여성</option>
+                                            </select><br>
+                                            <br>
+                                            <input class='btn btn-primary' type='submit' value='입력'>
+                                        </div>
+                                    </form>
+                                    
+								</section>
 
-    .submit-button {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    }
+							
 
-    .submit-button:hover {
-    background-color: #0056b3;
-    }
+						</div>
+					</div>
 
-    
-  
-    .bar {
-        color: #622db8;
-    }
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
 
-    .top-deco{
-        background-color: #da8638;
-        border-radius: 10px 10px 0 0;
-        height: 15px;
-        width: 26.5%;
-        margin-left: auto;
-        margin-right: auto;
-        border: 2px solid rgb(214, 214, 214);
-        border-bottom: none;
-        color: transparent;
-        }
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+								<!--<section>
+									<a href="{% url 'main:main' %}" class="image"><img src="static\images\logo2.PNG" alt="" /></a>
+								</section>-->
 
-    .bg3{
-        /*background-size:100% 165%;   // 아래 부분은 VH(Viewport Height)를 이용해 브라우저의 크기에 따라 배경화면이 자연스럽게 변함 */   
-        height: 100vh;
-        background-image: url("https://us.123rf.com/450wm/sugarwarrior/sugarwarrior1602/sugarwarrior160200141/51591850-fashion-clothing-infographics-template-concept-icons-design-for-your-product-or-design-web-and.jpg");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        background: url("https://us.123rf.com/450wm/sugarwarrior/sugarwarrior1602/sugarwarrior160200141/51591850-fashion-clothing-infographics-template-concept-icons-design-for-your-product-or-design-web-and.jpg") no-repeat center/cover;
-    }
-    footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    }
-    </style>
-    <title>사용자 신체정보 입력</title>
-</head>
-<body style="background-image: url(https://images.pexels.com/photos/1478477/pexels-photo-1478477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)" class="bg3">
-    <div class="top-deco"> ""</div>
-    
-    
-    <form method="post">
-        {% csrf_token %}
-        <h1>사용자 신체정보 입력</h1><br><br>
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>메뉴</h2>
+									</header>
+									<ul>
+									
+										<li><a href="{% url 'user:user' %}">신체정보 입력</a></li>
+										<li><a href="{% url 'clothes:clothes' %}">옷 치수 입력</a></li>
+										<!--<li>
+											<span class="opener">신체정보 및 사이즈표 입력</span>
+											<ul>
+												<li><a href="#">Lorem Dolor</a></li>
+												<li><a href="#">Ipsum Adipiscing</a></li>
+												<li><a href="#">Tempus Magna</a></li>
+												<li><a href="#">Feugiat Veroeros</a></li>
+											</ul>
+										</li>-->
+										
 
-        <label for="height">키 (cm):</label>
-        <input type="number" min="0" max="200" name="height" id="height" required><br>
+									</ul>
+								</nav>
 
-        <label for="weight">몸무게 (kg):</label>
-        <input type="number" min="0" max="200" name="weight" id="weight" required><br>
+							<!-- Section -->
+								<!--<section>
+									<header class="major">
+										<h2>색상 소개</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="static\images\pic04.jpg" alt="" /></a>
+											<p>오늘의 쿨톤 의상 컨셉에 대해서 소개합니다.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="static\images\pic08.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="static\images\pic09.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+									</div>
+									<ul class="actions">
+										<li><a href="#" class="button">더보기</a></li>
+									</ul>
+								</section>-->
 
-        <label for="gender">성별:</label>
-        <select name="gender" id="gender">
-            <option value="male">남성</option>
-            <option value="female">여성</option>
+							
 
-        </select><br>
-        <br>
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Made by I-FIT Team. 2023 I-FIT Site. <br>Design by <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
 
-        <input class='submit-button' type = 'submit'value = '입력'>
-    </form>
+						</div>
+					</div>
 
-    <footer class="w3-container w3-black w3-padding-16" style="text-align: center; background-color: #4c4a4900; "> <!--background-color: #da8638 -->
-        <p class="w3-center" style="font-weight: bold;"> © 2023 I-Fit. Powered by Django</a></p>
-    </footer>
+			</div>
 
-   <!-- <footer class="text-gray-600 body-font" style="position: absolute; bottom: 0; right: 45%; ">
-        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-        <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-            <span class="ml-3 text-xl">I-Fit</span>
-        </a>
-        <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2023 I-Fit —
-            <a href="https://github.com/hyunisnotnull/I-Fit" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@I-Fit</a>
-        </p>
-        </div>
-    </footer>
--->
-</body>
+		<!-- Scripts type="text/css" -->
+			<script src="static/js2/jquery.min.js" type="text/js"></script>
+			<script src="static/js2/browser.min.js" type="text/js"></script>
+			<script src="static/js2/breakpoints.min.js" type="text/js"></script>
+			<script src="static/js2/util.js" type="text/js"></script>
+			<script src="static/js2/main.js" type="text/js"></script>
 
-<!--<footer style="color: #da8638;">
-    <div class="flex items-center justify-center">
-        <div class="m-2 max-w-5xl items-center">
-            <div class="flex flex-col items-center"> <img class="flex m-1" src="https://dummyimage.com/150x50" />
-                <div class="m-2"> <a href="#"
-                        class="w-9 h-10 text-center border-current border-2 text-violet-600 hover:text-black pt-1 inline-block"><i
-                            class="fa fa-facebook m-2"></i></a> <a href="#"
-                        class="w-9 h-10 text-center border-current border-2 text-blue-600 hover:text-black pt-1 inline-block"><i
-                            class="fa fa-twitter m-2"></i></a> <a href="#"
-                        class="w-9 h-10 text-center border-current border-2 text-rose-600 hover:text-black pt-1 inline-block"><i
-                            class="fa fa-reddit m-2"></i></a> <a href="#"
-                        class="w-9 h-10 text-center border-current border-2 text-red-600 hover:text-black pt-1 inline-block"><i
-                            class="fa fa-pinterest m-2"></i></a> <a href="#"
-                        class="w-9 h-10 text-center border-current border-2 text-orange-600 hover:text-black pt-1 inline-block"><i
-                            class="fa fa-quora m-2"></i></a> </div>
-                <div class="flex md:flex-row flex-col">
-                    <p class="hover:text-blue-600 text-gray-500 font-medium m-2"> <a href="#">Home</a> </p>
-                    <p class="hover:text-blue-600 text-gray-500 font-medium m-2"> <a href="#">About us </a> </p>
-                    <p class="hover:text-blue-600 text-gray-500 font-medium m-2"> <a href="#">Services </a> </p>
-                    <p class="hover:text-blue-600 text-gray-500 font-medium m-2"> <a href="#">Contact Us </a> </p>
-                    <p class="hover:text-blue-600 text-gray-500 font-medium m-2"> <a href="#"> Privacy Policy </a> </p>
-                </div>
-                <div class="text-gray-500 font-medium mt-4 text-xs"> Copyright 2022. All rights reserved by <a href="#"
-                        class="text-blue-600">Tailwind CSS</a> </div>
-            </div>
-        </div>
-    </div>
-        <script src="https://use.fontawesome.com/03f8a0ebd4.js"></script>
-        <script src="https://cdn.tailwindcss.com"></script>
-    
-</footer>-->
-
+	</body>
 </html>
