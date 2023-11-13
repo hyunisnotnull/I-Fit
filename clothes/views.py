@@ -22,6 +22,7 @@ def clothes(request):
                 total_length = form.cleaned_data['total_length']
                 sleeve = form.cleaned_data['sleeve']
                 # 이어서 데이터 처리 코드를 작성
+                # 데이터 저장 추가
             elif clothing_type in ['bottom', 'skirt']:
                 # 바지 및 치마의 치수 입력 필드가 비어 있지 않다면, 해당 데이터를 처리
                 waist = form.cleaned_data['waist']
