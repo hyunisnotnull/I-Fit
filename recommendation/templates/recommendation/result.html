@@ -131,11 +131,32 @@
 										<h2>사용자 신체정보 입력</h2>
 									</header>
                                     <body>
-                                        <h1>사이즈 추천 결과</h1>
-                                        <p>추천된 사이즈: {{ recommended_size }}</p>
+                                        <h1>사이즈 비교 결과</h1>
                                     
-                                        <!-- 다른 정보를 표시할 수 있으면 여기에 추가 -->
-                                    </body>
+										<!-- 어깨 너비 추천 차이 -->
+										<p>어깨 너비 추천 차이: {{ recommended_size_difference_shoulder }}cm</p>
+
+										<!-- 가슴 둘레 추천 차이 -->
+										<p>가슴 둘레 추천 차이: {{ recommended_size_difference_chest }}cm</p>
+							
+										<!-- 전체 길이 추천 차이 -->
+										<p>전체 길이 추천 차이: {{ recommended_size_difference_total_length }}cm</p>
+							
+										<!-- 소매 길이 추천 차이 -->
+										<p>소매 길이 추천 차이: {{ recommended_size_difference_sleeve }}cm</p>
+							
+										<!-- 허리 둘레 추천 차이 -->
+										<p>허리 둘레 추천 차이: {{ recommended_size_difference_waist }}cm</p>
+							
+										<!-- 엉덩이 둘레 추천 차이 -->
+										<p>엉덩이 둘레 추천 차이: {{ recommended_size_difference_hip }}cm</p>
+							
+										<!-- 바지 길이 추천 차이 -->
+										<p>바지 길이 추천 차이: {{ recommended_size_difference_bottom_length }}cm</p>
+							
+										<!-- 허벅지 둘레 추천 차이 -->
+										<p>허벅지 둘레 추천 차이: {{ recommended_size_difference_thigh }}cm</p>
+									</body>
                                     
 								</section>
 

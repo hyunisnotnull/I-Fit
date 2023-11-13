@@ -30,7 +30,7 @@ def clothes(request):
                 thigh = form.cleaned_data['thigh']
                 # 이어서 데이터 처리 코드를 작성
             # 필요에 따라 딥러닝 모델로 데이터를 전달하고 추천 사이즈를 받는 코드를 작성
-            return redirect('recommendation/')
+            return redirect('/recommendation')
     else:
 
         print('insert getclothes')

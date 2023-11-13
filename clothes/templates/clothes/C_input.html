@@ -137,7 +137,7 @@
 									<header class="major">
 										<h2 class="form-header">옷 치수 입력</h2>
 									</header>
-                                    <form method="post" class="form-group">
+                                    <form method="post" class="form-group" action="{% url 'recommendation:recommendation' %}">
                                         {% csrf_token %}
                                         <label for="clothing-type" class="form-label">옷의 종류:</label>
                                         <select name="clothing-type" id="clothing-type" onchange="toggleSizeInputs()" class="form-select">
@@ -170,7 +170,8 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <button type="submit" class="form-submit">추천 받기</button>
+											<button type="submit" class="form-submit">추천 받기</button>
+										</form>
                                     </form>
                                     
 								</section>
