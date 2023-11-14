@@ -1,34 +1,55 @@
-# recommendation/recommendation.py
 def recommend_size(request):
-    diff_shoulder = request.session.get('diff_shoulder', 0)
-    diff_chest = request.session.get('diff_chest', 0)
-    diff_total_length = request.session.get('diff_total_length', 0)
-    diff_sleeve = request.session.get('diff_sleeve', 0)
+    size_keys = [
+        ('shoulder', 'recommended_size_shoulder'),
+        ('chest', 'recommended_size_chest'),
+        ('total_length', 'recommended_size_total_length'),
+        ('sleeve', 'recommended_size_sleeve'),
+        ('waist', 'recommended_size_waist'),
+        ('hip', 'recommended_size_hip'),
+        ('bottom_length', 'recommended_size_bottom_length'),
+        ('thigh', 'recommended_size_thigh'),
+    ]
 
-    diff_waist = request.session.get('diff_waist', 0)
-    diff_hip = request.session.get('diff_hip', 0)
-    diff_bottom_length = request.session.get('diff_bottom_length', 0)
-    diff_thigh = request.session.get('diff_thigh', 0)
+    for size_key, recommended_key in size_keys:
+        diff_size = request.session.get(f'diff_{size_key}', 0)
+        request.session[recommended_key] = diff_size
 
-    # 추천 차이를 세션에 저장
-    request.session['recommended_size_shoulder'] = diff_shoulder
-    request.session['recommended_size_chest'] = diff_chest
-    request.session['recommended_size_total_length'] = diff_total_length
-    request.session['recommended_size_sleeve'] = diff_sleeve
+    recommended_sizes = {recommended_key: request.session[recommended_key] for _, recommended_key in size_keys}
+    return recommended_sizes
 
-    request.session['recommended_size_waist'] = diff_waist
-    request.session['recommended_size_hip'] = diff_hip
-    request.session['recommended_size_bottom_length'] = diff_bottom_length
-    request.session['recommended_size_thigh'] = diff_thigh
+def diff(request):
+    # 예측된 사용자 신체 사이즈 가져오기
+    predicted_sizes = {
+        'shoulder': request.session.get('predict_shoulder', 0),
+        'chest': request.session.get('predict_chest', 0),
+        'total_length': request.session.get('predict_top', 0),
+        'sleeve': request.session.get('predict_arm', 0),
+        'waist': request.session.get('predict_waist', 0),
+        'hip': request.session.get('predict_ass', 0),
+        'bottom_length': request.session.get('predict_bottom', 0),
+        'thighs': request.session.get('predict_thighs', 0),
+        }
+    
 
-    # 추천 차이를 반환
-    return {
-        'recommended_size_shoulder': diff_shoulder,
-        'recommended_size_chest': diff_chest,
-        'recommended_size_total_length': diff_total_length,
-        'recommended_size_sleeve': diff_sleeve,
-        'recommended_size_waist': diff_waist,
-        'recommended_size_hip': diff_hip,
-        'recommended_size_bottom_length': diff_bottom_length,
-        'recommended_size_thigh': diff_thigh,
+    # 입력된 옷 사이즈 가져오기
+    clothing_type = request.session.get('clothing_type')
+    clothes_sizes = {
+        'shoulder': request.session.get('clothes_shoulder', 0),
+        'chest': request.session.get('clothes_chest', 0),
+        'total_length': request.session.get('clothes_total_length', 0),
+        'sleeve': request.session.get('clothes_sleeve', 0),
+        'waist': request.session.get('clothes_waist', 0),
+        'hip': request.session.get('clothes_hip', 0),
+        'bottom_length': request.session.get('clothes_bottom_length', 0),
+        'thighs': request.session.get('clothes_thigh', 0),
     }
+
+    # 차이 계산 및 세션에 저장
+    differences = {}
+    for size_name in predicted_sizes.keys():
+        predicted_size = predicted_sizes[size_name]
+        clothes_size = clothes_sizes.get(size_name, 0)
+        differences[size_name] = abs(predicted_size - clothes_size)
+        request.session[f'diff_{size_name}'] = differences[size_name]
+
+    return differences
