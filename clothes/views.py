@@ -10,7 +10,7 @@ def clothes(request):
 
         if form.is_valid():
             print("Form Data:", form.cleaned_data)
-            print(f"thighs: {clothing_type}")
+            print(f"shoulder: {shoulder}")
 
             clothing_type = form.cleaned_data['clothing_type']
             # 선택한 옷의 종류에 따라 필요한 옷 치수 입력을 요구하거나 입력된 데이터를 처리합니다.
