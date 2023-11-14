@@ -13,7 +13,7 @@ def recommendation(request):
         size_differences = diff(request)
         
         test1 = request.session.get('predict_shoulder', 0)
-        test2 = request.session.get('clothes_shoulder', 0)
+        test2 = request.session.get('Cshoulder', 0)
         print(f"predict: {test1}")
         print(f"clothes: {test2}")
         
@@ -27,9 +27,22 @@ def recommendation(request):
             'bottom_length': request.session.get('predict_bottom', 0),
             'thighs': request.session.get('predict_thighs', 0),
         }
-
+        clothes_sizes = {
+            'shoulder': request.session.get('shoulder', 0),
+            'chest': request.session.get('chest', 0),
+            'total_length': request.session.get('total_length', 0),
+            'sleeve': request.session.get('sleeve', 0),
+            'waist': request.session.get('waist', 0),
+            'hip': request.session.get('hip', 0),
+            'bottom_length': request.session.get('bottom_length', 0),
+            'thighs': request.session.get('thigh', 0),
+    }
         for size_name, predicted_size in predicted_sizes.items():
             print(f"Predicted {size_name}: {predicted_size}")
+
+        for size_name, clothes_size in clothes_sizes.items():
+            print(f"Clothes {size_name}: {clothes_size}")
+
 
         # 추천 사이즈 계산
         recommended_sizes = recommend_size(request)

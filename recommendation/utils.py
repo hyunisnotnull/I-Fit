@@ -34,14 +34,14 @@ def diff(request):
     # 입력된 옷 사이즈 가져오기
     clothing_type = request.session.get('clothing_type')
     clothes_sizes = {
-        'shoulder': request.session.get('clothes_shoulder', 0),
-        'chest': request.session.get('clothes_chest', 0),
-        'total_length': request.session.get('clothes_total_length', 0),
-        'sleeve': request.session.get('clothes_sleeve', 0),
-        'waist': request.session.get('clothes_waist', 0),
-        'hip': request.session.get('clothes_hip', 0),
-        'bottom_length': request.session.get('clothes_bottom_length', 0),
-        'thighs': request.session.get('clothes_thigh', 0),
+        'shoulder': request.session.get('shoulder', 0),
+        'chest': request.session.get('chest', 0),
+        'total_length': request.session.get('total_length', 0),
+        'sleeve': request.session.get('sleeve', 0),
+        'waist': request.session.get('waist', 0),
+        'hip': request.session.get('hip', 0),
+        'bottom_length': request.session.get('bottom_length', 0),
+        'thighs': request.session.get('thigh', 0),
     }
 
     # 차이 계산 및 세션에 저장
