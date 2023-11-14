@@ -1,15 +1,14 @@
-from django.shortcuts import render
-from .utils import recommend_size, diff 
+from django.shortcuts import render, redirect
 from .forms import SizeRecommendationForm
-# Create your views here.
-import logging
+from .utils import recommend_size
+from django.http import HttpResponse  # HttpResponse 추가
 
 def recommendation(request):
     if request.method == 'POST':
-        form = SizeRecommendationForm(request.POST)
-        
-        
-        # 옷 사이즈 차이 계산
+        # form을 직접 생성하지 않고, POST 데이터를 사용하지 않는다.
+        # form = SizeRecommendationForm(request.POST)
+
+        # POST 데이터에서 필요한 값을 직접 추출
         size_differences = diff(request)
         
         test1 = request.session.get('predict_shoulder', 0)
@@ -66,6 +65,8 @@ def recommendation(request):
         return render(request, 'recommendation/result.html', result_data)
 
     else:
-        form = SizeRecommendationForm()
+        # 폼을 생성하는 부분 생략
+        # form = SizeRecommendationForm()
 
-    return render(request, 'recommendation/result.html', {'form': form})
+        # 폼이 필요하지 않은 경우 바로 결과값을 보여줌
+        return render(request, 'recommendation/result.html', {'form': None})
