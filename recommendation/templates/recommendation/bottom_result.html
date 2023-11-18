@@ -1,0 +1,275 @@
+<!DOCTYPE HTML>
+
+{% load static %}
+<html>
+	<head>
+		<title>I-FIT 결과 페이지</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="{% static "css2\main.css" %}" />
+        
+		 <!-- stylesheet -->
+		 <link
+		 rel="stylesheet"
+		 href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
+		 />
+ 
+		 <!-- Font Awesome Link -->
+		 <link
+		 rel="stylesheet"
+		 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+		 integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+		 crossorigin="anonymous"
+		 />
+
+		<style>
+			
+            .container {
+                max-width: 400px;
+                width: 100%;
+                margin: 0 auto;
+            }
+        
+            .form-container {
+                background-color: #ffffff;
+                border-radius: 8px;
+                padding: 40px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+			.result-container {
+				background-color: #ffffff;
+				border-radius: 8px;
+				padding: 40px;
+				box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+				width: 50%;
+				float: left; /* 결과를 왼쪽으로 이동 */
+			}
+            h2 {
+                font-size: 28px;
+                color: #333333;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+        
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+        
+            label {
+                margin-top: 20px;
+                color: #666666;
+                font-weight: bold;
+            }
+        
+            select,
+            input[type="number"],
+            button[type="submit"] {
+                width: 100%;
+                padding: 10px;
+                border-radius: 4px;
+                border: 1px solid #cccccc;
+                box-sizing: border-box;
+                font-size: 16px;
+                margin-top: 5px;
+            }
+        
+            button[type="submit"] {
+                background-color: #4CAF50;
+                color: #ffffff;
+                cursor: pointer;
+                margin-top: 20px;
+            }
+        
+            button[type="submit"]:hover {
+                background-color: #45a049;
+            }
+            
+            /* 추가적으로 화면 크기에 따른 반응형 디자인을 적용하고 싶다면 아래와 같은 미디어 쿼리를 이용할 수 있습니다. */
+            @media screen and (max-width: 768px) {
+                .form-group {
+                    width: 100%;
+                }
+            }
+			table {
+				width: 100%;
+			}
+			
+			table td {
+				padding: 10px;
+				border-bottom: 1px solid #ddd;
+			}
+			.right-table {
+				margin-left: 20px; /* 이 값을 조절하여 원하는 간격을 설정하세요. */
+				margin-right: 10px;
+				margin-top: 15px;
+			}
+			.left-table {
+				margin-left: 20px;
+				margin-top: 15px;
+			}
+			.highlighted-header {
+				background-color: #57B894; /* 이 값을 조정하여 원하는 배경색을 설정하세요. */
+				padding: 10px; /* 패딩을 추가하여 텍스트 주위에 공간을 만드세요. */
+				color: #ffffff; /* 텍스트 색상을 변경하세요. */
+			}
+			
+        </style>
+        <script>
+            function toggleSizeInputs() {
+                var clothingType = document.getElementById('clothing-type').value;
+                var outerTopSizes = document.getElementById('outer-top-sizes');
+                var bottomSkirtSizes = document.getElementById('bottom-skirt-sizes');
+    
+                // 모든 치수 입력 필드를 숨김
+                outerTopSizes.style.display = 'none';
+                bottomSkirtSizes.style.display = 'none';
+    
+                if (clothingType === 'outer' || clothingType === 'top') {
+                    outerTopSizes.style.display = 'block';
+                } else if (clothingType === 'bottom' || clothingType === 'skirt') {
+                    bottomSkirtSizes.style.display = 'block';
+                }
+            }
+        </script>
+	</head>
+	<!--<div class='preloader'><div class='loaded'>&nbsp;</div></div>-->
+	<body class="is-preload">
+
+		
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Main -->
+					
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href = "{% url 'main:main' %}" class="logo"><strong>I-FIT</strong> 'Recommend clothes size to users WebSite'</a>
+									<ul class="icons">
+										<li><a href="https://html5up.net" class="icon brands fa-html5"><span class="label">Html5</span></a></li>
+										<li><a href="https://github.com/hyunisnotnull/I-Fit" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									</ul>
+								</header>
+							
+								
+							<section id="banner">
+								<img src="{% static 'css2/size.png' %}" alt="Size Image">
+								
+							</section>
+							<!-- Section -->
+							<section>
+								<header class="major">
+									<h2 class="form-header">결과</h2>
+								</header>
+								<!-- component -->
+								<div class="flex flex-wrap">
+									
+									<div class="w-full md:w-1/2 p-3">
+										<div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+											<div class="flex">
+												<div class="w-1/2 left-table">
+													<h2 class="highlighted-header" >사이즈 추천 결과</h2>
+													<table>
+														<tr><td>추천된 사이즈:</td><td>{{ recommended_size }}</td></tr>
+													</table>
+													<table>
+														<h2 class="highlighted-header">사이즈 비교 결과</h2>
+														<tr><td>허리 둘레 :</td><td> 바지가 {{ size_differences.waist.difference }} cm ({{ size_differences.waist.comparison }})</td></tr>
+														<tr><td>엉덩이 둘레 :</td><td> 바지가 {{ size_differences.hip.difference }} cm ({{ size_differences.hip.comparison }})</td></tr>
+														<tr><td>하체 총장 :</td><td> 바지가 {{ size_differences.bottom_length.difference }} cm ({{ size_differences.bottom_length.comparison }})</td></tr>
+														<tr><td>허벅지 둘레 :</td><td> 바지가 {{ size_differences.thighs.difference }} cm ({{ size_differences.thighs.comparison }})</td></tr>
+													</table>
+												</div>
+												<div class="w-1/2 right-table">
+													<h2 class="highlighted-header">{{ request.user.username }}님의 신체 사이즈 예측</h2>
+													<table>
+														<tr><td>어깨 너비:</td><td>{{ predicted_sizes.shoulder }} cm</td></tr>
+														<tr><td>가슴 둘레:</td><td>{{ predicted_sizes.chest }} cm</td></tr>
+														<tr><td>상체 총장:</td><td>{{ predicted_sizes.total_length }} cm</td></tr>
+														<tr><td>팔 길이:</td><td>{{ predicted_sizes.sleeve }} cm</td></tr>
+														<tr><td>허리 둘레:</td><td>{{ predicted_sizes.waist }} cm</td></tr>
+														<tr><td>엉덩이 둘레:</td><td>{{ predicted_sizes.hip }} cm</td></tr>
+														<tr><td>하체 총장:</td><td>{{ predicted_sizes.bottom_length }} cm</td></tr>
+														<tr><td>허벅지 둘레:</td><td>{{ predicted_sizes.thighs }} cm</td></tr>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> 
+							</section>	
+						
+							
+
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+								<!--<section>
+									<a href="{% url 'main:main' %}" class="image"><img src="static\images\logo2.PNG" alt="" /></a>
+								</section>-->
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>메뉴</h2>
+									</header>
+									<ul>
+										<li><a href="{% url 'accounts:profile' %}">프로필</a></li>
+										<li><a href="{% url 'user:user' %}">신체치수 입력</a></li>
+										<li><a href="{% url 'clothes:clothes' %}">옷 치수 입력</a></li>
+										
+
+									</ul>
+								</nav>
+
+								<section>
+									<header class="major">
+										<h2>추천 색상</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/soft-color-gradient/canvas.min.webp" alt="" /></a>
+											<p>회색에서 분홍색을 거쳐 연한 회색으로 서서히 변하는 색상으로 부드럽고 편안한 느낌</p>
+											
+										</article>
+										<article>
+											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/mango-gradient/canvas.min.webp" alt="" /></a>
+											<p>연한 황색에서 시작하여 진한 빨간색으로 서서히 변하는 색상으로 화면에 따뜻하고 활기찬 느낌</p>
+										</article>
+							
+									</div>
+									
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Made by I-FIT Team. 2023 I-FIT Site. <br>Design by <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts type="text/css" -->
+			<script src="static/js2/jquery.min.js" type="text/js"></script>
+			<script src="static/js2/browser.min.js" type="text/js"></script>
+			<script src="static/js2/breakpoints.min.js" type="text/js"></script>
+			<script src="static/js2/util.js" type="text/js"></script>
+			<script src="static/js2/main.js" type="text/js"></script>
+
+	</body>
+</html>
