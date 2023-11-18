@@ -60,7 +60,7 @@ def recommendation(request):
         template_name = 'recommendation/shirt_result.html'
     else:
         # 추후 추가할 의류 타입이 있다면 여기에 추가
-        template_name = 'recommendation/default_result.html'
+        template_name = 'recommendation/result.html'
 
     # 결과 데이터를 템플릿에 전달하고 렌더링
     return render(request, template_name, result_data)
