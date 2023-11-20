@@ -192,7 +192,7 @@ def compare(request):
 
                 form.save()
                 messages.success(request, '사이즈 정보가 수정되었습니다.')
-                return redirect('/clothes')
+                return redirect('/clothes/clothes')
             else:
                 messages.error(request, '올바르지 않은 데이터가 포함되어 있습니다. 다시 시도해주세요.')
         else:

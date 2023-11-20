@@ -27,7 +27,7 @@ class ClothingSizeInputForm(forms.Form):
     s_total_length = forms.FloatField(label='총장 (cm)', required=False)
     s_sleeve = forms.FloatField(label='소매길이 (cm)', required=False)
     
-    neck = forms.FloatField(label='목둘레 (cm)', required=False)
+    neck = forms.FloatField(label='목 둘레 (cm)', required=False)
     ntk = forms.FloatField(label='총장 (cm)', required=False)
 
     waist = forms.FloatField(label='허리단면 (cm)', required=False)
