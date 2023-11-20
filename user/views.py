@@ -22,7 +22,7 @@ def user(request):
                 request.session['user_weight'] = form.cleaned_data['weight']
                 request.session['user_gender'] = form.cleaned_data['gender']
 
-                
+
                 csv_file_path = 'data.csv'  
                 model_data = pd.read_csv(csv_file_path)
 
@@ -77,12 +77,12 @@ def user(request):
         else:
             form = UserBodyInputForm(instance=user_body_input)
     except UserBodyInput.DoesNotExist:
-        
+
         # 사용자의 사이즈 정보가 없는 경우, 새로운 정보를 입력하는 폼을 생성
         if request.method == 'POST':
             form = UserBodyInputForm(request.POST)
             if form.is_valid():
-                
+
                 user_body_input = form.save(commit=False)
                 user_body_input.user = request.user
                 user_body_input.save()
@@ -92,7 +92,7 @@ def user(request):
                 messages.error(request, '올바르지 않은 데이터가 포함되어 있습니다. 다시 시도해주세요.')
         else:
             form = UserBodyInputForm()
-    
+
     return render(request, 'user/U_input.html', {'form': form})
 
 def compare(request):
@@ -169,6 +169,8 @@ def compare(request):
                 request.session['predict_chest'] = average_chest
                 request.session['predict_shoulder'] = average_shoulder
                 request.session['predict_arm'] = average_arm
+                request.session['predict_neck'] = average_neck
+                request.session['predict_ntk'] = average_ntk
                 request.session['predict_waist'] = average_waist
                 request.session['predict_ass'] = average_ass
                 request.session['predict_bottom'] = average_bottom
@@ -181,6 +183,8 @@ def compare(request):
                 print(f"chest: {average_chest}")
                 print(f"shoulder: {average_shoulder}")
                 print(f"arm: {average_arm}")
+                print(f"neck: {average_neck}")
+                print(f"ntk: {average_ntk}")                
                 print(f"waist: {average_waist}")
                 print(f"ass: {average_ass}")
                 print(f"bottom: {average_bottom}")
@@ -207,5 +211,5 @@ def compare(request):
                 messages.error(request, '올바르지 않은 데이터가 포함되어 있습니다. 다시 시도해주세요.')
         else:
             form = UserCompareInputForm()
-    
+
     return render(request, 'user/U_compare.html', {'form': form})

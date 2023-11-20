@@ -59,8 +59,8 @@ def diff(request):
     return differences
 
 def determine_fit_info(size_differences):
-    large_count = sum(1 for size_info in size_differences.values() if size_info['comparison'] == '큽니다')
-    small_count = sum(1 for size_info in size_differences.values() if size_info['comparison'] == '작습니다')
+    large_count = sum(1 for size_info in size_differences.values() if size_info['difference'] > 5)
+    small_count = sum(1 for size_info in size_differences.values() if size_info['difference'] < -5)
 
     if large_count >= 3:
         return '한 사이즈 큰 옷을 추천합니다.'
