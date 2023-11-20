@@ -176,68 +176,66 @@
 										<h2 class="form-header">옷 치수 입력</h2>
 									</header>
                                     <div class="container">
-                                        <div class="form-container">
-                                            <form method="post" class="form-group">
-                                                {% csrf_token %}
-                                                <label for="clothing-type" class="form-label">옷의 종류:</label>
-                                                <select name="clothing_type" id="clothing-type" onchange="toggleSizeInputs()" class="form-select">
-                                                    <option value="" selected disabled>선택해주세요</option>
-                                                    <option value="outer">아우터</option>
-                                                    <option value="top">상의</option>
-                                                    <option value="bottom">바지</option>
-                                                    <option value="skirt">치마</option>
-                                                    <option value="long">한벌옷(롱패딩, 코트, 원피스)</option>
-                                                    <option value="shirt">셔츠</option>
-                                                </select>
-                                                
-                                                <div id="size-inputs">
-                                                    <div id="outer-top-sizes" style="display: none;">
-                                                        <label for="shoulder" class="form-label">어깨너비 (cm):</label>
-                                                        <input type="number"  min="0" max="200" name="shoulder" id="shoulder" class="form-number">
-                                                        <label for="chest" class="form-label">가슴단면 (cm):</label>
-                                                        <input type="number"  min="0" max="200" name="chest" id="chest" class="form-number">
-                                                        <label for="total-length" class="form-label">총장 (cm):</label>
-                                                        <input type="number"  min="0" max="200" name="total_length" id="total-length" class="form-number">
-                                                        <label for="sleeve" class="form-label">소매길이 (cm):</label>
-                                                        <input type="number"   min="0" max="200" name="sleeve" id="sleeve" class="form-number">
-                                                    </div>
-                                                    <div id="bottom-skirt-sizes" style="display: none;">
-                                                        <label for="waist" class="form-label">허리단면 (cm):</label>
-                                                        <input type="number"  min="0" max="200" name="waist" id="waist" class="form-number">
-                                                        <label for="hip" class="form-label">엉덩이단면 (cm):</label>
-                                                        <input type="number"  min="0" max="200" name="hip" id="hip" class="form-number">
-                                                        <label for="bottom-length" class="form-label">총장 (cm):</label>
-                                                        <input type="number"   min="0" max="200"name="bottom_length" id="bottom-length" class="form-number">
-                                                        <label for="thighs" class="form-label">허벅지단면 (cm):</label>
-                                                        <input type="number"  min="0" max="200" name="thighs" id="thighs" class="form-number">
-                                                    </div>
-                                                    <div id="long-sizes" style="display: none;">
-                                                        <label for="l_shoulder" class="form-label">어깨너비 (cm):</label>
-                                                        <input type="number"  min="0" max="200" name="l_shoulder" id="l_shoulder" class="form-number">
-                                                        <label for="l_chest" class="form-label">가슴단면 (cm):</label>
-                                                        <input type="number"  min="0" max="200" name="l_chest" id="l_chest" class="form-number">
-                                                        <label for="ntk" class="form-label">목~무릎 길이 (cm):</label>
-                                                        <input type="number"  min="0" max="200" name="ntk" id="ntk" class="form-number">
-                                                        <label for="l_sleeve" class="form-label">소매길이 (cm):</label>
-                                                        <input type="number"   min="0" max="200" name="l_sleeve" id="l_sleeve" class="form-number">
-                                                    </div>
-                                                    <div id="shirt-sizes" style="display: none;">
-                                                        <label for="s_shoulder" class="form-label">어깨너비 (cm):</label>
-                                                        <input type="number"  min="0" max="200" name="s_shoulder" id="s_shoulder" class="form-number">
-                                                        <label for="s_chest" class="form-label">가슴단면 (cm):</label>
-                                                        <input type="number"  min="0" max="200" name="s_chest" id="s_chest" class="form-number">
-                                                        <label for="s_total_length" class="form-label">총장 (cm):</label>
-                                                        <input type="number"  min="0" max="200" name="s_total_length" id="s_total_length" class="form-number">
-                                                        <label for="s_sleeve" class="form-label">소매길이 (cm):</label>
-                                                        <input type="number"   min="0" max="200" name="s_sleeve" id="s_sleeve" class="form-number">
-                                                        <label for="neck" class="form-label">목길이 (cm):</label>
-                                                        <input type="number"   min="0" max="200" name="neck" id="neck" class="form-number">
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                    <button type="submit" class="form-submit">추천 받기</button>
-                                            </form>
-
+                                        <div class="form-container">                                           
+										<form method="post" class="form-group">
+											{% csrf_token %}
+											<label for="clothing-type" class="form-label">옷의 종류:</label>
+											<select name="clothing_type" id="clothing-type" onchange="toggleSizeInputs()" class="form-select">
+												<option value="" selected disabled>선택해주세요</option>
+												<option value="outer">아우터</option>
+												<option value="top">상의</option>
+												<option value="bottom">바지</option>
+												<option value="skirt">치마</option>
+												<option value="long">한벌옷(롱패딩, 코트, 원피스)</option>
+												<option value="shirt">셔츠</option>
+											</select>
+											
+											<div id="size-inputs">
+												<div id="outer-top-sizes" style="display: none;">
+													<label for="shoulder" class="form-label">어깨너비 (cm):</label>
+													<input type="number"  min="0" max="200" name="shoulder" id="shoulder" class="form-number">
+													<label for="chest" class="form-label">가슴단면 (cm):</label>
+													<input type="number"  min="0" max="200" name="chest" id="chest" class="form-number">
+													<label for="total-length" class="form-label">총장 (cm):</label>
+													<input type="number"  min="0" max="200" name="total_length" id="total-length" class="form-number">
+													<label for="sleeve" class="form-label">소매길이 (cm):</label>
+													<input type="number"   min="0" max="200" name="sleeve" id="sleeve" class="form-number">
+												</div>
+												<div id="bottom-skirt-sizes" style="display: none;">
+													<label for="waist" class="form-label">허리단면 (cm):</label>
+													<input type="number"  min="0" max="200" name="waist" id="waist" class="form-number">
+													<label for="hip" class="form-label">엉덩이단면 (cm):</label>
+													<input type="number"  min="0" max="200" name="hip" id="hip" class="form-number">
+													<label for="bottom-length" class="form-label">총장 (cm):</label>
+													<input type="number"   min="0" max="200"name="bottom_length" id="bottom-length" class="form-number">
+													<label for="thighs" class="form-label">허벅지단면 (cm):</label>
+													<input type="number"  min="0" max="200" name="thighs" id="thighs" class="form-number">
+												</div>
+												<div id="long-sizes" style="display: none;">
+													<label for="l_shoulder" class="form-label">어깨너비 (cm):</label>
+													<input type="number"  min="0" max="200" name="l_shoulder" id="l_shoulder" class="form-number">
+													<label for="l_chest" class="form-label">가슴단면 (cm):</label>
+													<input type="number"  min="0" max="200" name="l_chest" id="l_chest" class="form-number">
+													<label for="ntk" class="form-label">총장 (cm):</label>
+													<input type="number"  min="0" max="200" name="ntk" id="ntk" class="form-number">
+													<label for="l_sleeve" class="form-label">소매길이 (cm):</label>
+													<input type="number"   min="0" max="200" name="l_sleeve" id="l_sleeve" class="form-number">
+												</div>
+												<div id="shirt-sizes" style="display: none;">
+													<label for="s_shoulder" class="form-label">어깨너비 (cm):</label>
+													<input type="number"  min="0" max="200" name="s_shoulder" id="s_shoulder" class="form-number">
+													<label for="s_chest" class="form-label">가슴단면 (cm):</label>
+													<input type="number"  min="0" max="200" name="s_chest" id="s_chest" class="form-number">
+													<label for="s_total_length" class="form-label">총장 (cm):</label>
+													<input type="number"  min="0" max="200" name="s_total_length" id="s_total_length" class="form-number">
+													<label for="s_sleeve" class="form-label">소매길이 (cm):</label>
+													<input type="number"   min="0" max="200" name="s_sleeve" id="s_sleeve" class="form-number">
+													<label for="neck" class="form-label">목 둘레 (cm):</label>
+													<input type="number"   min="0" max="200" name="neck" id="neck" class="form-number">
+												</div>
+												<br>
+														<button type="submit" class="form-submit">추천 받기</button>
+												</form>
                                         </div>
                                     </div>
 								</section>
@@ -259,7 +257,6 @@
 									</form>
 								</section>
 								
-
 							<!-- Menu -->
 								<nav id="menu">
 									<header class="major">

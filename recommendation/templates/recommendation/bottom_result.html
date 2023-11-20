@@ -218,14 +218,14 @@
 												<div class="w-full left-table">
 													<h2 class="highlighted-header">사이즈 추천 결과</h2>
 													<table>
-														<tr><td>추천된 사이즈:</td><td>{{ recommended_size }}</td></tr>
+														<tr><td>추천된 사이즈:</td><td>{{ fit_info }}</td></tr>
 													</table>
 													<table>
 														<h2 class="highlighted-header">사이즈 비교 결과</h2>
-														<tr><td>허리 둘레 :</td><td> 하의가 {{ size_differences.waist.difference }} cm ({{ size_differences.waist.comparison }})</td></tr>
-														<tr><td>엉덩이 둘레 :</td><td> 하의가 {{ size_differences.hip.difference }} cm ({{ size_differences.hip.comparison }})</td></tr>
-														<tr><td>하체 총장 :</td><td> 하의가 {{ size_differences.bottom_length.difference }} cm ({{ size_differences.bottom_length.comparison }})</td></tr>
-														<tr><td>허벅지 둘레 :</td><td> 하의가 {{ size_differences.thighs.difference }} cm ({{ size_differences.thighs.comparison }})</td></tr>
+														<tr><td>허리 둘레 :</td><td> 허리 둘레가 {{ size_differences.waist.difference }} cm ({{ size_differences.waist.comparison }})</td></tr>
+														<tr><td>엉덩이 둘레 :</td><td> 엉덩이 둘레가 {{ size_differences.hip.difference }} cm ({{ size_differences.hip.comparison }})</td></tr>
+														<tr><td>하체 총장 :</td><td> 하체 총장이 {{ size_differences.bottom_length.difference }} cm ({{ size_differences.bottom_length.comparison }})</td></tr>
+														<tr><td>허벅지 둘레 :</td><td> 허벅지 둘레가 {{ size_differences.thighs.difference }} cm ({{ size_differences.thighs.comparison }})</td></tr>
 													</table>
 												</div>
 											</div>
