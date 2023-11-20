@@ -63,7 +63,7 @@ def diff(request):
     for size_name, predicted_size in predicted_sizes.items():
         clothes_size = clothes_sizes.get(size_name, 0)
         difference = predicted_size - clothes_size
-        comparison = '작습니다' if difference > 10 else '큽니다' if difference < 3 else '적당합니다'
+        comparison = '작습니다' if difference > 0 else '큽니다' if difference < 0 else '적당합니다'
         differences[size_name] = {
             'difference': round(abs(difference), 2),
             'comparison': comparison
@@ -76,7 +76,18 @@ def determine_fit_info(size_differences):
     large_count = sum(1 for size_info in size_differences.values() if size_info['comparison'] == '큽니다')
     small_count = sum(1 for size_info in size_differences.values() if size_info['comparison'] == '작습니다')
 
-    if large_count >= 6:
+    if large_count >= 7:
+        return '한 사이즈 작은 옷을 추천합니다.'
+    elif small_count >= 3:
+        return '한 사이즈 큰 옷을 추천합니다.'
+    else:
+        return '현재 옷 사이즈가 적당합니다.'
+    
+def determine_fit_info2(size_differences):
+    large_count = sum(1 for size_info in size_differences.values() if size_info['comparison'] == '큽니다')
+    small_count = sum(1 for size_info in size_differences.values() if size_info['comparison'] == '작습니다')
+
+    if large_count >= 8:
         return '한 사이즈 작은 옷을 추천합니다.'
     elif small_count >= 3:
         return '한 사이즈 큰 옷을 추천합니다.'

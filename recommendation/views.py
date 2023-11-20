@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .utils import recommend_size, diff, determine_fit_info
+from .utils import recommend_size, diff, determine_fit_info , determine_fit_info2
 
 def recommendation(request):
         size_differences = diff(request)
@@ -47,6 +47,8 @@ def recommendation(request):
         # 추천 사이즈 계산
         recommended_sizes = recommend_size(request)
         fit_info = determine_fit_info(size_differences)
+        fit_info2 = determine_fit_info2(size_differences)
+
         # HTML에 표시될 형식으로 크기 포맷팅
         formatted_sizes = {key: "{:.2f}".format(float(value)) for key, value in recommended_sizes.items()}
         # 결과 데이터 생성
@@ -56,6 +58,7 @@ def recommendation(request):
             'clothes_sizes': clothes_sizes,
             'recommended_sizes': formatted_sizes,
             'fit_info': fit_info,
+            'fit_info2' : fit_info2
         }
         # 중간 결과 확인
         print("Result Data:", result_data)
