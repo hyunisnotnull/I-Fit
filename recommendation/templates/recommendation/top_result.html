@@ -3,7 +3,7 @@
 {% load static %}
 <html>
 	<head>
-		<title>I-FIT 결과 페이지</title>
+		<title>I-FIT 결과 페이지(top)</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="{% static "css2\main.css" %}" />
@@ -92,7 +92,7 @@
                 }
             }
 			table {
-				width: 100%;
+				width: 96%;
 			}
 
 			table td {
@@ -100,18 +100,63 @@
 				border-bottom: 1px solid #ddd;
 			}
 			.right-table {
-				margin-left: 20px; /* 이 값을 조절하여 원하는 간격을 설정하세요. */
+				margin-left: 10px; /* 이 값을 조절하여 원하는 간격을 설정하세요. */
 				margin-right: 10px;
 				margin-top: 15px;
 			}
 			.left-table {
-				margin-left: 20px;
+				margin-left: 10px;
 				margin-top: 15px;
 			}
 			.highlighted-header {
 				background-color: #57B894; /* 이 값을 조정하여 원하는 배경색을 설정하세요. */
 				padding: 10px; /* 패딩을 추가하여 텍스트 주위에 공간을 만드세요. */
 				color: #ffffff; /* 텍스트 색상을 변경하세요. */
+				
+				width: 96%
+			}
+
+			h3, h4 {
+				font-size: 0.9em;
+			}
+			.mini-posts p {
+				font-size: 0.8em;
+			}
+			.hidden-text {
+				display: none;
+				color: #0066CC;
+				background-color: #F5F5F5;
+				padding: 5px;
+				border-radius: 5px;
+				margin-top: 5px;
+				
+			}
+			.more-info {
+				font-size: 10px;
+				cursor: pointer;
+			}
+
+			/* 로딩 화면 스타일 */
+			.preloader {
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 9999;
+				background: #fff;
+			}
+			.loader {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: 100px;
+				height: 100px;
+				
+				transform: translate(-50%, -50%);
+			}
+			.loader img {
+				width: 100px;
 			}
 
         </style>
@@ -135,6 +180,12 @@
 	</head>
 	<!--<div class='preloader'><div class='loaded'>&nbsp;</div></div>-->
 	<body class="is-preload">
+		<div class="preloader">
+			<div class="loader">
+				<img src="https://high.gwnu.ac.kr/contents/images/boxloading.gif" alt="Loading...">
+				<!--<img src="https://gifburg.com/images/gifs/loading/webp/0020.webp" alt="Loading...">-->
+			</div>
+		</div>
 
 
 		<!-- Wrapper -->
@@ -152,38 +203,38 @@
 										<li><a href="https://github.com/hyunisnotnull/I-Fit" class="icon brands fa-github"><span class="label">Github</span></a></li>
 									</ul>
 								</header>
-
-
-							<section id="banner">
-								<img src="{% static 'css2/size.png' %}" alt="Size Image">
-
-							</section>
-							<!-- Section -->
-							<section>
-								<header class="major">
-									<h2 class="form-header">결과</h2>
-								</header>
-								<!-- component -->
-								<div class="flex flex-wrap">
-
-									<div class="w-full md:w-1/2 p-3">
-										<div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-											<div class="flex">
-												<div class="w-1/2 left-table">
-													<h2 class="highlighted-header" >사이즈 추천 결과</h2>
+								
+								<section class="w-1/2 float-left">
+									<header class="major">
+										<h2 class="form-header">결과</h2>
+									</header>
+									<img src="{% static 'css2/top.png' %}" alt="Size Image">
+								</section>
+								<section class="w-1/2 float-right">
+									
+									<div class="flex flex-wrap">
+										<div class="w-full p-3">
+											<div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+												<div class="w-full left-table">
+													<h2 class="highlighted-header">사이즈 추천 결과</h2>
 													<table>
 														<tr><td>추천된 사이즈:</td><td>{{ recommended_size }}</td></tr>
 													</table>
 													<table>
 														<h2 class="highlighted-header">사이즈 비교 결과</h2>
-														<tr><td>어깨 너비 :</td><td> 옷이 {{ size_differences.shoulder.difference }} cm ({{ size_differences.shoulder.comparison }})</td></tr>
-														<tr><td>가슴 둘레 :</td><td> 옷이 {{ size_differences.chest.difference }} cm ({{ size_differences.chest.comparison }})</td></tr>
-														<tr><td>전체 길이 :</td><td> 옷이 {{ size_differences.total_length.difference }} cm ({{ size_differences.total_length.comparison }})</td></tr>
-														<tr><td>소매 길이 :</td><td> 옷이 {{ size_differences.sleeve.difference }} cm ({{ size_differences.sleeve.comparison }})</td></tr>
-
+														<tr><td>어깨 너비 :</td><td> 옷이 {{ size_differences.waist.difference }} cm ({{ size_differences.waist.comparison }})</td></tr>
+														<tr><td>가슴 둘레 :</td><td> 옷이 {{ size_differences.hip.difference }} cm ({{ size_differences.hip.comparison }})</td></tr>
+														<tr><td>전체 길이 :</td><td> 옷이 {{ size_differences.bottom_length.difference }} cm ({{ size_differences.bottom_length.comparison }})</td></tr>
+														<tr><td>소매 길이 :</td><td> 옷이 {{ size_differences.thighs.difference }} cm ({{ size_differences.thighs.comparison }})</td></tr>
 													</table>
 												</div>
-												<div class="w-1/2 right-table">
+											</div>
+										</div>
+									</div>
+									<div class="flex flex-wrap">
+										<div class="w-full p-3">
+											<div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+												<div class="w-full right-table">
 													<h2 class="highlighted-header">{{ request.user.username }}님의 신체 사이즈 예측</h2>
 													<table>
 														<tr><td>어깨 너비:</td><td>{{ predicted_sizes.shoulder }} cm</td></tr>
@@ -199,12 +250,8 @@
 											</div>
 										</div>
 									</div>
-								</div> 
-							</section>	
-
-
-
-
+								</section>
+								
 						</div>
 					</div>
 
@@ -218,9 +265,7 @@
 										<input type="text" name="query" id="query" placeholder="Search" />
 									</form>
 								</section>
-								<!--<section>
-									<a href="{% url 'main:main' %}" class="image"><img src="static\images\logo2.PNG" alt="" /></a>
-								</section>-->
+								
 
 							<!-- Menu -->
 								<nav id="menu">
@@ -236,23 +281,60 @@
 									</ul>
 								</nav>
 
+								<!-- Tips & Guides Section -->
 								<section>
 									<header class="major">
-										<h2>추천 색상</h2>
+										<h2>팁 & 가이드</h2>
 									</header>
 									<div class="mini-posts">
 										<article>
-											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/soft-color-gradient/canvas.min.webp" alt="" /></a>
-											<p>회색에서 분홍색을 거쳐 연한 회색으로 서서히 변하는 색상으로 부드럽고 편안한 느낌</p>
-
+											<h3>&bull;I-FIT 추천 서비스 이용 가이드라인</h3>
+											<p>&nbsp;&nbsp;<span onclick="toggleText(this)">
+												<span class="more-info">&#10551;더 보기 </span>
+												<span class="hidden-text">I-FIT의 사이즈 추천 서비스는 사용자의 신체 정보와 착용하려는 옷의 치수를 기반으로 합니다. 먼저, '신체정보 입력'에서 자신의 신체 정보를 정확하게 입력해주세요. 그 후, '옷 치수 입력'에서 원하는 옷의 치수를 입력하시면 됩니다. 이렇게 하면, I-FIT의 알고리즘이 사용자에게 가장 적합한 사이즈를 추천해드릴 수 있습니다.</span>
+												</span>
+											</p>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="https://tailwindflex.com/public/images/thumbnails/mango-gradient/canvas.min.webp" alt="" /></a>
-											<p>연한 황색에서 시작하여 진한 빨간색으로 서서히 변하는 색상으로 화면에 따뜻하고 활기찬 느낌</p>
+											<h3>&bull;정확한 사이즈 측정 방법</h3>
+											<p>&nbsp;&nbsp;<span onclick="toggleText(this)">
+												<span class="more-info">&#10551;더 보기 </span>
+												<span class="hidden-text">옷의 사이즈를 정확하게 측정하기 위해서는, 가장 잘 맞는 옷을 평평한 표면에 놓고 측정하시는 것이 가장 이상적입니다. 가슴, 허리, 엉덩이, 팔길이 등을 포함한 주요 부위의 치수를 측정하시고, 이를 '옷 치수 입력'에 정확하게 기입해주세요.</span>
+												</span>
+											</p>
 										</article>
-
+										<article>
+											<h3>&bull;옷 사이즈 선택 시 고려 사항</h3>
+											<p>&nbsp;&nbsp;<span onclick="toggleText(this)">
+												<span class="more-info">&#10551;더 보기 </span>
+												<span class="hidden-text">옷을 선택할 때는 개인의 체형, 착용감, 스타일 등을 고려해야 합니다. 때문에, I-FIT의 추천 사이즈는 참고용으로 활용하시되, 개인의 편안함과 선호도를 우선시해주시기 바랍니다. 또한, 브랜드마다 사이즈가 다르므로 구매 전에는 반드시 해당 브랜드의 사이즈 차트를 확인하시는 것이 좋습니다.</span>
+												</span>
+											</p>
+										</article>
 									</div>
+								</section>
 
+								<section>
+									<header class="major">
+										<h2>자주 묻는 질문</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<h4>Q: I-FIT의 사이즈 추천 기능을 어떻게 이용하나요?</h4>
+											<p>&nbsp;&nbsp;<span onclick="toggleText(this)">
+												<span class="more-info">&#10551;더 보기 </span>
+												<span class="hidden-text">A: I-FIT의 특별한 알고리즘은 사용자의 신체 정보와 착용하려는 옷의 치수를 기반으로 최적의 사이즈를 추천합니다. '신체정보 입력'에서 자신의 신체 정보를 정확하게 입력한 후, '옷 치수 입력'에서 원하는 옷의 치수를 입력하면, 우리의 알고리즘이 가장 적합한 사이즈를 추천해드립니다.</span>
+												</span>
+											</p>
+										</article>
+										<article>
+											<h4>Q: I-FIT의 사이즈 추천은 얼마나 정확한가요?</h4>
+											<p>&nbsp;&nbsp;<span onclick="toggleText(this)">
+												<span class="more-info">&#10551;더 보기 </span>
+												<span class="hidden-text">A: I-FIT의 알고리즘은 다양한 신체 정보와 옷 치수 데이터를 바탕으로 제작되었습니다. 그러나 각 개인의 체형과 옷의 실제 사이즈, 브랜드마다의 사이즈 차이 등을 모두 반영하기는 어렵습니다. 따라서, I-FIT의 추천은 참고용으로 사용하시고, 최종 결정은 사용자 본인이 하시는 것을 권장드립니다.</span>
+											</span></p>
+										</article>
+									</div>
 								</section>
 
 							<!-- Footer -->
@@ -271,6 +353,22 @@
 			<script src="static/js2/breakpoints.min.js" type="text/js"></script>
 			<script src="static/js2/util.js" type="text/js"></script>
 			<script src="static/js2/main.js" type="text/js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<script>
+				$(window).on('load', function () {
+					$('.preloader').fadeOut();
+				});
+			</script>
 
+			<script>
+				function toggleText(element) {
+					var hiddenText = element.getElementsByClassName('hidden-text')[0];
+					if (hiddenText.style.display === "none") {
+						hiddenText.style.display = "block";
+					} else {
+						hiddenText.style.display = "none";
+					}
+				}
+			</script>
 	</body>
 </html>

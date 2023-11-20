@@ -6,7 +6,40 @@
 {% block content %}
 <link rel="stylesheet" href="https://cdn.tailgrids.com/tailgrids-fallback.css" />
 <script src="https://cdn.tailwindcss.com"></script>
-<body>
+
+<style>
+   /* 로딩 화면 스타일 */
+			.preloader {
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 9999;
+				background: #fff;
+			}
+			.loader {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: 100px;
+				height: 100px;
+				
+				transform: translate(-50%, -50%);
+			}
+			.loader img {
+				width: 100px;
+			}
+</style>
+
+<body class="is-preload">
+   <div class="preloader">
+      <div class="loader">
+         <img src="https://high.gwnu.ac.kr/contents/images/boxloading.gif" alt="Loading...">
+         <!--<img src="https://gifburg.com/images/gifs/loading/webp/0020.webp" alt="Loading...">-->
+      </div>
+   </div>
+   
     <section class="bg-[#F4F7FF] py-20 lg:py-[120px]">
         <div class="container">
            <div class="flex flex-wrap -mx-4">
@@ -331,6 +364,12 @@
            </div>
         </div>
      </section>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script>
+         $(window).on('load', function () {
+            $('.preloader').fadeOut();
+         });
+      </script>
 </body>
 {% if error %}
 <script>
