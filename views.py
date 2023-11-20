@@ -64,7 +64,7 @@ def user(request):
                 print(f"arm: {average_arm}")
                 print(f"neck: {average_neck}")
                 print(f"ntk: {average_ntk}")
-                print(f"waist: {average_neck}")
+                print(f"waist: {average_waist}")
                 print(f"ass: {average_ass}")
                 print(f"bottom: {average_bottom}")
                 print(f"thighs: {average_thighs}")
