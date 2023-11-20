@@ -34,10 +34,10 @@ def diff(request):
     clothes_sizes = {
         'shoulder': round(request.session.get('shoulder', 0), 2),
         'chest': round(request.session.get('chest', 0), 2),
-        'ntk': round(request.session.get('ntk', 0), 2),
         'total_length': round(request.session.get('total_length', 0), 2),
-        'neck': round(request.session.get('neck', 0), 2),
         'sleeve': round(request.session.get('sleeve', 0), 2),
+        'ntk': round(request.session.get('ntk', 0), 2),
+        'neck': round(request.session.get('neck', 0), 2),
         'waist': round(request.session.get('waist', 0), 2),
         'hip': round(request.session.get('hip', 0), 2),
         'bottom_length': round(request.session.get('bottom_length', 0), 2),
@@ -55,4 +55,16 @@ def diff(request):
             'comparison': comparison
         }
         request.session[f'diff_{size_name}'] = differences[size_name]
+
     return differences
+
+def determine_fit_info(size_differences):
+    large_count = sum(1 for size_info in size_differences.values() if size_info['comparison'] == '큽니다')
+    small_count = sum(1 for size_info in size_differences.values() if size_info['comparison'] == '작습니다')
+
+    if large_count >= 3:
+        return '한 사이즈 큰 옷을 추천합니다.'
+    elif small_count >= 3:
+        return '한 사이즈 작은 옷을 추천합니다.'
+    else:
+        return '현재 옷 사이즈가 적당합니다.'

@@ -30,12 +30,12 @@ def clothes(request):
                 waist = form.cleaned_data['waist']
                 hip = form.cleaned_data['hip']
                 bottom_length = form.cleaned_data['bottom_length']
-                thigh = form.cleaned_data['thigh']
+                thighs = form.cleaned_data['thighs']
 
                 request.session['waist'] = waist * 2
                 request.session['hip'] = hip * 2
                 request.session['bottom_length'] = bottom_length
-                request.session['thigh'] = thigh * 2
+                request.session['thighs'] = thighs * 2
 
 
             elif clothing_type in ['long']:
