@@ -28,3 +28,4 @@ runserver로 구동 확인
 17. bottom size 비교 계산 수정 <완료>
 18. recommendation 추가 토글 디자인 <완료>
 19. size error 수정 및 dataset 수정 <완료>
+20. size figure 조정 <완료>
