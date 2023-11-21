@@ -26,3 +26,5 @@ runserver로 구동 확인
 15. 한벌옷, 셔츠 column 수정 <완료>
 16. main html start toggle bar relocation <완료>
 17. bottom size 비교 계산 수정 <완료>
+18. recommendation 추가 토글 디자인 <완료>
+19. size error 수정 및 dataset 수정 <완료>
