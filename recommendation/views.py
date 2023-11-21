@@ -62,6 +62,8 @@ def recommendation(request):
             'fit_info': fit_info,
         }
 
+        print("Result Data:", result_data)
+
         # 의류 타입에 따라 다른 템플릿 선택
         clothing_type = request.session.get('clothing_type')
         if clothing_type in ['top', 'outer']:
