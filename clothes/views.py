@@ -8,6 +8,25 @@ from django.contrib.auth.decorators import login_required
 def clothes(request):
     if request.method == 'POST':
         form = ClothingSizeInputForm(request.POST)
+        # 세션 초기화
+        request.session['shoulder'] = 0
+        request.session['chest'] = 0
+        request.session['total_length'] = 0
+        request.session['sleeve'] = 0
+        request.session['l_shoulder'] = 0
+        request.session['l_chest'] = 0
+        request.session['l_sleeve'] = 0
+        request.session['s_shoulder'] = 0
+        request.session['s_chest'] = 0
+        request.session['s_total_length'] = 0
+        request.session['s_sleeve'] = 0
+        request.session['ntk'] = 0
+        request.session['neck'] = 0
+        request.session['waist'] = 0
+        request.session['hip'] = 0
+        request.session['bottom_length'] = 0
+        request.session['thighs'] = 0
+
         if form.is_valid():
             clothing_type = form.cleaned_data['clothing_type']
             request.session['clothing_type'] = clothing_type
