@@ -68,6 +68,11 @@
                        </a>
                     </div>
                     <form method="post">
+                        <script>
+                           $.ajaxSetup({
+                           headers: { "X-CSRFToken": '{{csrf_token}}' }
+                           });
+                        </script>
                         {% csrf_token %}
                        <div class="mb-6">
                           <input
