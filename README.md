@@ -30,7 +30,6 @@ runserver로 구동 확인
 19. size error 수정 및 dataset 수정 <완료>
 20. size figure 조정 <완료>
 ------------------------------------------
-TO-DO
 21. user review 구축?
 22. user review html 디자인?
 23. server domain 구매? or 진행?
