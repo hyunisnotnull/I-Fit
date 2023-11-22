@@ -75,7 +75,7 @@ def user(request):
                 user_body_input.user = request.user
                 user_body_input.save()
                 messages.success(request, '사이즈 정보가 저장되었습니다.')
-                return redirect('compare')
+                return redirect('/user/compare')
             else:
                 messages.error(request, '올바르지 않은 데이터가 포함되어 있습니다. 다시 시도해주세요.')
         else:
@@ -176,7 +176,7 @@ def compare(request):
                 user_body_input.user = request.user
                 user_body_input.save()
                 messages.success(request, '사이즈 정보가 저장되었습니다.')
-                return redirect('')
+                return redirect('/clothes/clothes')
             else:
                 messages.error(request, '올바르지 않은 데이터가 포함되어 있습니다. 다시 시도해주세요.')
         else:
