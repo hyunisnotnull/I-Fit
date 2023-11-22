@@ -84,7 +84,7 @@
                                                     <li>
                                                         <a href="#" id="logout-link">로그아웃</a>
                                                         <form id="logout-form" method="POST" action="{% url 'accounts:logout' %}" style="display: none;">
-                                                            {% csrf_token %}
+                                                            <!-- {% csrf_token %} -->
                                                         </form>
                                                     </li>
                                                     <li><a href="{% url 'accounts:profile' %}">프로필</a></li>
