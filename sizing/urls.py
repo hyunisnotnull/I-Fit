@@ -24,4 +24,5 @@ urlpatterns = [
     path("user/", include("user.urls")),  # /user/ 경로를 user 앱의 URL과 연결
     path("clothes/", include("clothes.urls")),  # /clothes/ 경로를 clothes 앱의 URL과 연결
     path("recommendation/", include("recommendation.urls")),  # /recommendation/ 경로를 recommendation 앱의 URL과 연결
+    path("reviews/", include("reviews.urls")),
 ]
