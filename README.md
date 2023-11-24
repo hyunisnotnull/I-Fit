@@ -29,7 +29,8 @@ runserver로 구동 확인
 18. recommendation 추가 토글 디자인 <완료>
 19. size error 수정 및 dataset 수정 <완료>
 20. size figure 조정 <완료>
+21. user profile page에 예측 신체 사이즈 추가 <완료>
 ------------------------------------------
-21. user review 구축?
-22. user review html 디자인?
-23. server domain 구매? or 진행?
+22. user review 구축?
+23. user review html 디자인?
+24. server domain 구매? or 진행?
