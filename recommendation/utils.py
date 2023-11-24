@@ -14,6 +14,28 @@ def recommend_size(request):
     recommended_sizes = {key: request.session.get(value, 0) for key, value in size_keys}
     return recommended_sizes
 
+def get_predicted_sizes(request):
+    predicted_sizes = {
+        'shoulder': round(request.session.get('predict_shoulder', 0), 2),
+        'chest': round(request.session.get('predict_chest', 0), 2),
+        'total_length': round(request.session.get('predict_top', 0), 2),
+        'sleeve': round(request.session.get('predict_arm', 0), 2),
+        'l_shoulder': round(request.session.get('predict_shoulder', 0), 2),
+        'l_chest': round(request.session.get('predict_chest', 0), 2),
+        'l_sleeve': round(request.session.get('predict_arm', 0), 2),
+        's_shoulder': round(request.session.get('predict_shoulder', 0), 2),
+        's_chest': round(request.session.get('predict_chest', 0), 2),
+        's_total_length': round(request.session.get('predict_top', 0), 2),
+        's_sleeve': round(request.session.get('predict_arm', 0), 2),
+        'ntk': round(request.session.get('predict_ntk', 0), 2),
+        'neck': round(request.session.get('predict_neck', 0), 2),
+        'waist': round(request.session.get('predict_waist', 0), 2),
+        'hip': round(request.session.get('predict_ass', 0), 2),
+        'bottom_length': round(request.session.get('predict_bottom', 0), 2),
+        'thighs': round(request.session.get('predict_thighs', 0), 2),
+    }
+
+    return predicted_sizes
 def diff(request):
     # 예측된 사용자 신체 사이즈 가져오기
     predicted_sizes = {

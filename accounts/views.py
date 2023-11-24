@@ -5,6 +5,7 @@ from django.contrib import auth, messages
 from django.contrib.auth import logout
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from recommendation.utils import get_predicted_sizes
 import hashlib
 
 # Create your views here.
@@ -86,4 +87,6 @@ def profile(request):
     except UserBodyInput.DoesNotExist:
         user_body_input = None
 
-    return render(request, 'accounts/profile.html', {'user_body_input': user_body_input})
+
+    predicted_sizes = get_predicted_sizes(request)
+    return render(request, 'accounts/profile.html', {'user_body_input': user_body_input, 'predicted_sizes': predicted_sizes})
