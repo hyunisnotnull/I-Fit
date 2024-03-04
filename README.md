@@ -31,6 +31,3 @@ runserver로 구동 확인
 20. size figure 조정 <완료>
 21. user profile page에 예측 신체 사이즈 추가 <완료>
 ------------------------------------------
-22. user review 구축?
-23. user review html 디자인?
-24. server domain 구매? or 진행?
